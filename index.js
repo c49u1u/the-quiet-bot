@@ -1,0 +1,42 @@
+////////////////////////////////////////////////////////////////////////////////////////////////
+//importing stuf in general
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//import node modules
+const Discord = require('discord.js');
+
+//import json files
+const config = require('./config.json');
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//start new discord client
+////////////////////////////////////////////////////////////////////////////////////////////////
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
+
+//func on bot host
+client.once('ready', () => {
+    console.log('bot is up')
+});
+
+//login to client???
+client.login(config.client.token);
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Events
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+//join vc that user is in and then automaticly leave this took me so long to make this part
+client.on('message', async message => {
+	//join or not based on weather or not user is in vc holy shit thats a boring ass sentance
+	if (message.member.voice.channel){
+		message.member.voice.channel.join();
+	}
+});
+
+//detect if user is speaking
+client.on('guildMemberSpeaking', function(member, speaking){
+	if (member.speaking = true){
+		member.send('STFU')
+	}
+})

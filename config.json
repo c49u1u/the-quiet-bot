@@ -1,0 +1,8 @@
+{
+    "client": {
+        "token": "your token"
+    },
+    "commands": {
+        "prefix": "q+"
+    }
+}
